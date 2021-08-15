@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use  App\Http\Controllers\deshbordController;
+use  App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::middleware(['auth', 'verified'])->group(function (){
+    Route::get('/',[deshbordController::class, 'index'])->name('dashboard');
+    Route::resource('/categories', CategoriesController::class);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

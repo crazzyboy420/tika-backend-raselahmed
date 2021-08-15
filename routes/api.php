@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/test', function(){
-      return 'Change data in my coumputer xxx';
+      return 'Change data in my coumputer';
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
