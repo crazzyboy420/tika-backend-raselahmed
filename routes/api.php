@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\varificationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test', function(){
       return 'Change data in my coumputer';
 });
+
+Route::post('/varify',[varificationController::class,'varify']);
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

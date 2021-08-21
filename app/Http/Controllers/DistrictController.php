@@ -14,7 +14,9 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        //
+       $districts = District::paginate();
+
+       return view('districts.index',['districts' => $districts]);
     }
 
     /**
@@ -81,5 +83,16 @@ class DistrictController extends Controller
     public function destroy(District $district)
     {
         //
+    }
+
+    public function enable_disable($id)
+    {
+        $enableDisable = District::findOrFail($id);
+        $enableDisable->enable = !$enableDisable->enable;
+        $enableDisable->save();
+
+        return redirect(route('districts.index'))->with([
+            'massege' => $enableDisable->name . ' district update successfull',
+        ]);
     }
 }
