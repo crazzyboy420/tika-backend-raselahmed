@@ -7,6 +7,7 @@ use App\Models\Division;
 use App\Models\person;
 use App\Models\Upazila;
 use App\Models\User;
+use App\Models\Vaccine;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -65,6 +66,15 @@ class DatabaseSeeder extends Seeder
             $categories->name = $category['name'];
             $categories->min_age = $category['min_age'];
             $categories->save();
+        }
+
+        //Vaccines
+        $available_vaccines = ['Pfizer', 'Moderna', 'AstraZeneca', 'Sinopharm', 'Sputnik V'];
+
+        foreach($available_vaccines as $vaccine){
+            $vaccines = new Vaccine();
+            $vaccines->name = $vaccine;
+            $vaccines->save();
         }
     }
 }

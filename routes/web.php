@@ -5,6 +5,7 @@ use  App\Http\Controllers\deshbordController;
 use  App\Http\Controllers\CategoriesController;
 use  App\Http\Controllers\DivisionController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\UpazilaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::post('/divisions-enable-disable/{id}',[DivisionController::class,'enableDisable'])->name('divisions-enable-disable');
     Route::resource('/districts', DistrictController::class);
     Route::post('/district-enable-disable/{id}',[DistrictController::class, 'enable_disable'])->name('district-enable-disable');
+    Route::resource('/upazila', UpazilaController::class);
+    Route::post('/upazilas_ed/{id}',[UpazilaController::class, 'upazila_ed'])->name('upazila_ed');
 });
 
 

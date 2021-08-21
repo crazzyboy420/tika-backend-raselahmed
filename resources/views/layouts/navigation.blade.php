@@ -22,6 +22,9 @@
                     <x-nav-link :href="route('districts.index')" :active="request()->routeIs('districts.index')">
                         {{ __('Districts') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('upazila.index')" :active="request()->routeIs('upazila.index')">
+                        {{ __('Upazillas') }}
+                    </x-nav-link>
 
                     <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
                         {{ __('categories') }}

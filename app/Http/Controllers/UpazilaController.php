@@ -14,7 +14,9 @@ class UpazilaController extends Controller
      */
     public function index()
     {
-        //
+        $upazlias = Upazila::paginate();
+
+        return view('upazilas.index',['upazilas' => $upazlias]);
     }
 
     /**
@@ -81,5 +83,15 @@ class UpazilaController extends Controller
     public function destroy(Upazila $upazila)
     {
         //
+    }
+    public function upazila_ed($id)
+    {
+       $upazila_ed = Upazila::findOrFail($id);
+       $upazila_ed->enable = !$upazila_ed->enable;
+       $upazila_ed->save();
+
+       return redirect(route('upazila.index'))->with([
+           'massege' => $upazila_ed->name . ' upazila update Successfull',
+       ]);
     }
 }
